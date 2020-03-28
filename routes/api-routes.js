@@ -6,11 +6,13 @@ router.get("/api/workouts/range", function (req, res) {
     db.Workout.find({})
         .then(function (workouts) {
             res.json(workouts);
+            console.log(workouts)
         })
         .catch(function (error) {
             res.json(error)
         });
 });
+
 router.get("/api/workouts", function (req, res) {
     db.Workout.find({})
         .then(function (workouts) {
@@ -20,15 +22,18 @@ router.get("/api/workouts", function (req, res) {
             res.json(error)
         });
 });
-router.post("/api/workouts/range", function (req, res) {
+
+router.post("/api/workouts", function (req, res) {
     db.Workout.create({})
         .then(function (workouts) {
             res.json(workouts);
+            console.log(workouts)
         })
         .catch(function (error) {
             res.json(error)
         });
 });
+
 router.put("/api/workouts/:id", function ({ body, params }, res) {
     db.Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } })
         .then(function (data) {
